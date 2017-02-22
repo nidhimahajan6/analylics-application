@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>fade in and out </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+<div style="background:#2E9AFE;width:100%;">My Effect is fadeOut Effect</div>
+<button id="btn2">fade in in 5sec</button>
+<button id="btn1">fade out in 5 sec</button>
+
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#btn1").click(function(){
+			$("div").fadeOut(3000);
+        
+		});
+		$("#btn2").click(function(){
+			$("div").fadeIn(3000);
+		});
+	});
+</script>
+</html>

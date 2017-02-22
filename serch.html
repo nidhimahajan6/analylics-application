@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>search using javascript and jquery in json</title>
+</head>
+<body>
+<div id="searcharea">
+ <h2>Live Search</h2>
+ <input type="search" id="search"/>
+</div>
+<div id="update"></div>
+</body>
+<script type="text/javascript" src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<script type="text/javascript">
+$('#search').keyup(function() {//when key is pressed in search bar
+ var searchTerm = $(this).val(); //val of search bar
+ var myExp = new RegExp(searchTerm, "i"); //regular experation
+
+ $.getJSON('data.json', function(data){//get the json file
+
+  var output = "<ul id='result'>";
+  $.each(data, function(key, val){
+   if(val.city.search(myExp) != -1){//search for the data in the json file
+    output += '<li>';
+    output += '<h3>' +val.zipcode+ '</h3>';
+    output += '<h3>'+val.city+ '</h3>';
+    output += '<h3>'+val.country+ '</h3>';
+    output += '</li>';
+   }
+  });//end each
+  output += "</ul>";
+  $('#update').html(output);//output result to the update div
+ });
+});
+</script>
+
+
+</html>

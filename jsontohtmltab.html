@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding"> 
+    <style>
+        table, th, td 
+        {
+            margin:10px 0;
+            border:solid 1px #444;
+            padding:5px 5px;
+            font:15px Tahoma;
+        }
+        th {
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+
+  //  $(document).ready(function () {
+        function CreateTableFromJSON(){
+        $.getJSON("tabl.json", function (data) {
+
+            var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
+            $.each(data, function (index, value) {
+                arrItems.push(value);       // PUSH THE VALUES INSIDE THE ARRAY.
+            });
+
+            // EXTRACT VALUE FOR TABLE HEADER.
+            var col = [];
+            for (var i = 0; i < arrItems.length; i++) {
+                for (var key in arrItems[i]) {
+                    if (col.indexOf(key) === -1) {
+                        col.push(key);
+                       
+                    }
+                }
+            }
+
+            // CREATE DYNAMIC TABLE.
+            var table = document.createElement("table");
+
+            // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+            var tr = table.insertRow(-1);                   // TABLE ROW.
+
+            for (var i = 0; i < col.length; i++) {
+                var th = document.createElement("th");      // TABLE HEADER.
+                th.innerHTML = col[i];
+                tr.appendChild(th);
+            }
+
+            // ADD JSON DATA TO THE TABLE AS ROWS.
+            for (var i = 0; i < arrItems.length; i++) {
+
+                tr = table.insertRow(-1);
+
+                for (var j = 0; j < col.length; j++) {
+                    var tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = arrItems[i][col[j]];
+
+                }
+            }
+
+            // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+            var divContainer = document.getElementById("showData");
+            divContainer.innerHTML = "";
+            divContainer.appendChild(table);
+        });
+    }
+  //  });
+</script> 
+
+    
+     <input type="button" onclick="CreateTableFromJSON()" value="Create Table From JSON" />
+    <div id="showData"></div>
+    <body>
+
+ <h2>Live Search</h2>
+ <input type="search" id="search"/>
+
+<div id="container"></div>
+<script type="text/javascript">
+
+$('#search').keyup(function() {//when key is pressed in search bar
+   // debugger;
+  
+  var t = $("#showData td");
+
+ /* t.each(function(index,value) {
+
+  
+    console.log("value==?" + value); 
+    alert("value is " + value);
+});*/
+ 
+         for(var i = 0; i < t.length; i++){
+   if(t[i].firstChild.textContent === $("#search").val()){
+      //   var res  = t[i].firstChild.textContent;
+         $(t[i]).css("background-color", "red");
+            
+      // alert(">>" + t[i].first
+       // alert(">>" + t[i].firstChild.textContent);
+        return;
+   }/*else{
+       alert(">>Not aailable");
+   }*/
+
+    }
+
+});
+
+</script>
+</body>
+
+</html>
+
+
+<!--
+
+$('#showData td').each(function() {
+    var cellText = $(this).html();    
+});
+
+
+
+$("#showData td")
+
+
+for(var i = 0; i < t.length; i++){
+    var td = t[i];
+    console.log(td);
+}
+
+$.each(t, function (index, value) {
+    if(value=="Asp")
+              // console.log(" val-> "+ value)
+            });
+
+         for(var i = 0; i < t.length; i++){
+    var td = t[i];
+   
+}
+
+
+
+-->

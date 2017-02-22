@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+
+   	$.get("http://date.jsontest.com/?service=ip", function( data ) {
+ // $( "#display" ).html( data.id);
+   
+//$.getJSON("http://date.jsontest.com/?service=ip"-->
+   // function(data) {
+        $.each(data, function(key, val) {
+            var tr=$('<tr></tr>');
+            $.each(data.id, function(k, v){
+                $('<td>'+data.id+'</td>').appendTo(tr);
+            });
+            tr.appendTo('#display');
+        });​
+    });​
+});
+});
+</script>
+</head>
+<body>
+
+
+<button>Get JSON data</button>
+
+<table id="display" >
+    
+</table>
+
+</body>
+</html>

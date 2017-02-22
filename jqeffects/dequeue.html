@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> deque the function</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<style type="text/css">
+		div{
+			margin:10px;
+			height:100px;
+			width:100px;
+			top:10px;
+			left:20px;
+			background-color: #9F81F7
+		}
+		div.new{
+			background-color: #9F29F5
+		}
+	</style>
+</head>
+<body>
+
+ <button>Start</button>
+<div </div>
+
+</body>
+<script type="text/javascript">
+	$( "button" ).click(function() {
+  $( "div" )
+  .animate({ left:"+=250px" }, 2000 )
+   .queue(function() {
+      $( this ).toggleClass( "new" ).dequeue();
+    })
+.animate({ left:"-=250px" }, 2000 );
+});
+</script>
+</html>

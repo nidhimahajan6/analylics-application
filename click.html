@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> this is click function</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$("p").bind("click", function(){
+   $( "
+
+This is a click Event
+").appendTo( "body" );
+});
+
+$("p").bind("dblclick", function(){
+   $( "
+
+This is a double-click Event
+"  ).appendTo( "body" );
+});
+	</script>
+</head>
+<body>
+
+<p>click me</p>
+
+</body>
+</html>

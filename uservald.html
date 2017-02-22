@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery.js"></script>
+	<title>user validation </title>
+	<script type="text/javascript">
+
+		function validateUrPw(thisform)
+		{
+			var userName=thisform.uname.value;
+			var passWord=thisform.pw.value;
+			if(userName=="")
+             {
+             	alert("please enter a valid username");
+             	thisform.uname.focus();
+             	return false;
+
+             }
+             if(passWord=="")
+             {
+             	alert("please enter a valid password");
+             	thisform.pw.focus();
+             	return false;
+             }
+             return true;
+
+		}
+</script>
+</head>
+<body>
+<form action="user.html" onsubmit="return validateUrPw(this)" method="post" >
+<legend>
+	login form
+</legend>
+<label>
+USER NAME :<input type="text" name="uname"/><br/>
+</label>
+<label>
+	PASSWORD :<input type="password" name="pw"/><br/>
+</label>
+<label>
+	<input type="submit" value="submit" /> 
+</label>
+	
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ajax to table format</title>
+  <meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<style>
+table {
+    width: 50%;
+    
+}
+th {
+    background: #f1f1f1;
+    font-weight: bold;
+    padding: 6px;
+    
+}
+td {
+    background: #f9f9f9;
+    padding: 6px;
+    
+}
+tr.hovered {
+  background-color: lightblue;
+  color: #666;
+}
+
+
+</style>
+
+
+</head>
+<body onload=my_ajax()>
+<button id="res">Get JSON data</button>
+<div id="searcharea">
+ <h2>Live Search</h2>
+ <input type="search" id="search"/>
+</div>
+<div id="update"></div>
+<ul  id="mylist">
+    
+        <li id="firstname">firstName</li>
+        <li id="lastname">lastname</li>
+        <li id="age">Age</li>
+        <li id="address">Address</li>
+        <li id="phonenumber">phoneNumber</li>
+
+    </ul>
+
+
+
+
+<script type="text/javascript">
+	
+function my_ajax(){
+
+}
+function display_data() {
+    $("#mylist").hide();
+    document.getElementById("val").innerHTML = some_value;
+}
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	// $("#val").filter(".zip").addClass("selected");
+
+
+    $("#res").click(function(){
+        
+
+$.ajax({
+    url: 'datafile.json',
+    dataType: 'json',
+    success: function(data) {
+        for (var i=0; i<data.length;i++ ) {
+            var row = $('<li>' + data[i].firstname+ '</li>' +   data[i].lastname+ '</li>' + data[i].age + '</li>'+ data[i].address + '</li>'+ data[i].phonenumber + '</li>');
+            $('#mylist').append(row);}
+          
+      
+    error: function(jqXHR, textStatus, errorThrown){
+        alert('Error: ' + textStatus + ' - ' + errorThrown);
+    
+});
+});
+});
+</script>
+<script type="text/javascript">
+$('#search').keyup(function(e) {//when key is pressed in search bar
+ var searchTerm = $(this).val(); //val of search bar
+ var myExp = new RegExp(searchTerm, "i"); //regular experation
+
+ $.getJSON('datafile.json', function(data){ 
+
+  var output = "<ul id='result'>";
+  $.each(data, function(key, val){
+   if(val.name.search(myExp) != -1){//search for the data in the json file
+    output += '<li>';
+    output += '<h3>' +val.firstname+ '</h3>';
+    output += '<h3>' +val.lastname+ '</h3>' ;
+    output += '<h3>' +val.age+ '</h3>' ;
+    output += '<h3>' +val.phonenumber+ '</h3>' ;
+    output += '<h3>' +val.address+ '</h3>' ;
+
+    output += '</li>';
+   }
+  });//end each
+  output += "</ul>";
+  $('#update').html(output);//output result to the update div
+ });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> slide down and slide up</title>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<style type="text/css">
+		div{
+			width:100px;
+			height:100px;
+			margin: 10px;
+			background-color:#6D5050;
+			display:none;
+			float: right;}
+	</style>
+</head>
+<body>
+<button id="btn1"> slide down</button>
+<button id="btn2"> slide up</button>
+<div id="one"></div>
+<div id="two"></div>
+<div id="three"></div>
+</body>
+<script type="text/javascript">
+	$("#btn1").click(function(){
+		$("div").slideDown();
+	});
+	$("#btn2").click(function(){
+		$("div").slideUp();
+	});
+</script>
+</html>

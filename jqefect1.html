@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>animate an element by changignig its height and width</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+<button id="btn1">Animate height & width</button>
+<button id="btn2">Reset</button>
+<div id="box" style="background:#B45F04;height:100px;width:100px;margin:6px;"></div>
+
+</body>
+<script type="text/javascript">
+	
+	$("#btn1").click(function(){
+		$("#box").animate({width:"500px",
+			          height:"500px"},1500);
+	});
+$("#btn2").click(function(){
+		$("#box").animate({width:"100px",
+			          height:"100px"},1500);
+	});
+</script>
+</html>
